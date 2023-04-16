@@ -15,35 +15,63 @@ const columns = ["Temperature", "Rain", "Weather Code", "Wind Speed"];
 const hoursOfDay = Array.from({ length: 24 }, (_, i) => i);
 
 const weatherCodes = {
-	0: "Clear sky",
-	1: "Mainly clear",
-	2: "Partly cloudy",
-	3: "Overcast",
-	45: "Fog and depositing rime fog",
-	48: "Fog and depositing rime fog",
-	51: "Drizzle: Light intensity",
-	53: "Drizzle: Moderate intensity",
-	55: "Drizzle: Dense intensity",
-	56: "Freezing Drizzle: Light intensity",
-	57: "Freezing Drizzle: Dense intensity",
-	61: "Rain: Slight intensity",
-	63: "Rain: Moderate intensity",
-	65: "Rain: Heavy intensity",
-	66: "Freezing Rain: Light intensity",
-	67: "Freezing Rain: Heavy intensity",
-	71: "Snow fall: Slight intensity",
-	73: "Snow fall: Moderate intensity",
-	75: "Snow fall: Heavy intensity",
-	77: "Snow grains",
-	80: "Rain showers: Slight intensity",
-	81: "Rain showers: Moderate intensity",
-	82: "Rain showers: Violent intensity",
-	85: "Snow showers: Slight intensity",
-	86: "Snow showers: Heavy intensity",
-	95: "Thunderstorm: Slight or moderate intensity",
-	96: "Thunderstorm with slight hail",
-	99: "Thunderstorm with heavy hail"
-  };
+  0: "Clear sky",
+  1: "Mainly clear",
+  2: "Partly cloudy",
+  3: "Overcast",
+  45: "Fog and depositing rime fog",
+  48: "Fog and depositing rime fog",
+  51: "Drizzle: Light intensity",
+  53: "Drizzle: Moderate intensity",
+  55: "Drizzle: Dense intensity",
+  56: "Freezing Drizzle: Light intensity",
+  57: "Freezing Drizzle: Dense intensity",
+  61: "Rain: Slight intensity",
+  63: "Rain: Moderate intensity",
+  65: "Rain: Heavy intensity",
+  66: "Freezing Rain: Light intensity",
+  67: "Freezing Rain: Heavy intensity",
+  71: "Snow fall: Slight intensity",
+  73: "Snow fall: Moderate intensity",
+  75: "Snow fall: Heavy intensity",
+  77: "Snow grains",
+  80: "Rain showers: Slight intensity",
+  81: "Rain showers: Moderate intensity",
+  82: "Rain showers: Violent intensity",
+  85: "Snow showers: Slight intensity",
+  86: "Snow showers: Heavy intensity",
+  95: "Thunderstorm: Slight or moderate intensity",
+  96: "Thunderstorm with slight hail",
+  99: "Thunderstorm with heavy hail",
+};
+
+const corsProxy = "https://cors-anywhere.herokuapp.com/";
+
+
+function sendPostRequest() {
+  fetch(
+    "https://maker.ifttt.com/trigger/alert/with/key/jYQPvCu0FhLHWWubV9HtYXC26cpOPTzypnDvzurjZNl",
+    {
+      method: "POST",
+      headers: {
+		'Origin': 'http://localhost:3000',
+        "Content-Type": "application/json",
+		"Access-Control-Allow-Origin": "*",
+		"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+		'Access-Control-Request-Method': 'POST',
+      },
+      body: JSON.stringify({ value1: "testing a new stmt\nmilo" }),
+    }
+  )
+	.then(response => response.json())
+    .then((responseJson) => {
+		console.log(responseJson)
+      // handle response
+    })
+    .catch((error) => {
+      // handle error
+    });
+}
 
 const Scards = (props) => {
   return (
@@ -68,18 +96,18 @@ const Service = () => {
   const [apiResponse, setApiResponse] = useState("");
 
   useEffect(() => {
-	const currentDate = new Date().toISOString().slice(0, 10); // Get current date in YYYY-MM-DD format
-	const fetchData = async () => {
-	  const response = await fetch(
-		`https://api.open-meteo.com/v1/forecast?latitude=35.77&longitude=-78.69&hourly=temperature_2m,rain,weathercode,windspeed_10m&current_weather=true&forecast_days=1&start_date=${currentDate}&end_date=${currentDate}&timezone=America%2FNew_York`
-	  );
-	  const data = await response.json();
-	  setApiResponse(data.hourly);
-	};
-  
-	fetchData();
+    const currentDate = new Date().toISOString().slice(0, 10); // Get current date in YYYY-MM-DD format
+    const fetchData = async () => {
+      const response = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=35.77&longitude=-78.69&hourly=temperature_2m,rain,weathercode,windspeed_10m&current_weather=true&forecast_days=1&start_date=${currentDate}&end_date=${currentDate}&timezone=America%2FNew_York`
+      );
+      const data = await response.json();
+      setApiResponse(data.hourly);
+    };
+
+    fetchData();
   }, []);
-  
+
   console.log("hey", apiResponse);
 
   return (
@@ -95,6 +123,8 @@ const Service = () => {
             <p className="display-6 mb-1">Weather Status for Today!</p>
           </div>
           <div className="row d-flex items-align-center justify-content-evenly">
+            <button onClick={sendPostRequest}>Send Request</button>
+
             <Table>
               <TableHead>
                 <TableRow>
