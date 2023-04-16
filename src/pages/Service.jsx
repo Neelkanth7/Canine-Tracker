@@ -39,7 +39,7 @@ const Service = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-		"https://api.open-meteo.com/v1/forecast?latitude=35.77&longitude=-78.69&hourly=temperature_2m,rain,weathercode,windspeed_10m&current_weather=true&forecast_days=1&start_date=2023-04-15&end_date=2023-04-15&timezone=America%2FNew_York"
+        "https://api.open-meteo.com/v1/forecast?latitude=35.77&longitude=-78.69&hourly=temperature_2m,rain,weathercode,windspeed_10m&current_weather=true&forecast_days=1&start_date=2023-04-15&end_date=2023-04-15&timezone=America%2FNew_York"
       );
       const data = await response.json();
       setApiResponse(data.hourly);
@@ -48,11 +48,11 @@ const Service = () => {
     fetchData();
   }, []);
 
-  
+  console.log("hey", apiResponse);
 
   return (
     <>
-     <Secheader
+      <Secheader
         sectitle="Weather Status"
         secdesc="Check if the weather is right to have fun today!"
       />
@@ -63,34 +63,57 @@ const Service = () => {
             <p className="display-6 mb-1">Weather Status for Today!</p>
           </div>
           <div className="row d-flex items-align-center justify-content-evenly">
-		  <Table>
-  <TableHead>
-    <TableRow>
-      <TableCell>Time</TableCell>
-      {columns.map((column) => (
-        <TableCell key={column}>{column}</TableCell>
-      ))}
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    {hoursOfDay.map((hour) => (
-      <TableRow key={hour}>
-        <TableCell>{hour}:00</TableCell>
-        {columns.map((column) => {
-          if (column === "Temperature") {
-            return (
-              <TableCell key={`${column}-${hour}`}>
-			  {console.log("hey", apiResponse.temperature_2m[hour])}
-              </TableCell>
-            );
-          } else {
-            return <TableCell key={`${column}-${hour}`}></TableCell>;
-          }
-        })}
-      </TableRow>
-    ))}
-  </TableBody>
-</Table>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Time</TableCell>
+                  {columns.map((column) => (
+                    <TableCell key={column}>{column}</TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {hoursOfDay.map((hour) => (
+                  <TableRow key={hour}>
+                    <TableCell>{hour}:00</TableCell>
+                    {columns.map((column) => {
+                      if (column === "Temperature") {
+                        return (
+                          <TableCell key={`${column}-${hour}`}>
+                            {apiResponse.temperature_2m &&
+                              apiResponse.temperature_2m[hour]}
+                          </TableCell>
+                        );
+                      } else if (column === "Rain") {
+                        return (
+                          <TableCell key={`${column}-${hour}`}>
+                            {apiResponse.rain && apiResponse.rain[hour]}
+                          </TableCell>
+                        );
+                      } else if (column === "Weather Code") {
+                        return (
+                          <TableCell key={`${column}-${hour}`}>
+                            {apiResponse.weathercode &&
+                              apiResponse.weathercode[hour]}
+                          </TableCell>
+                        );
+                      } else if (column === "Wind Speed") {
+                        return (
+                          <TableCell key={`${column}-${hour}`}>
+                            {apiResponse.windspeed_10m &&
+                              apiResponse.windspeed_10m[hour]}
+                          </TableCell>
+                        );
+                      } else {
+                        return (
+                          <TableCell key={`${column}-${hour}`}></TableCell>
+                        );
+                      }
+                    })}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </div>
         </div>
       </section>
