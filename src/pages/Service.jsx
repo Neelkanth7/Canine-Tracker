@@ -50,15 +50,16 @@ const corsProxy = "https://cors-anywhere.herokuapp.com/";
 
 function sendPostRequest() {
   fetch(
-    "https://maker.ifttt.com/trigger/alert/with/key/jYQPvCu0FhLHWWubV9HtYXC26cpOPTzypnDvzurjZNl",
+    "https://cors-anywhere.herokuapp.com/https://maker.ifttt.com/trigger/alert/with/key/jYQPvCu0FhLHWWubV9HtYXC26cpOPTzypnDvzurjZNl",
     {
       method: "POST",
+      mode: 'cors',
       headers: {
-		'Origin': 'http://localhost:3000',
-        "Content-Type": "application/json",
-		"Access-Control-Allow-Origin": "*",
-		"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-		'Access-Control-Request-Method': 'POST',
+
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+ 
       },
       body: JSON.stringify({ value1: "testing a new stmt\nmilo" }),
     }
