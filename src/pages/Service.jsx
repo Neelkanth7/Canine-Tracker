@@ -1,18 +1,18 @@
-import React , { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Secheader from "./common/Secondaryheader";
 import Data from "../data/Servicesdata";
 
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
 
-
-const daysOfWeek = [];
-const columns = ['Temperature','Rain','Weather Code','Wind Speed'];
-
+const columns = ["Temperature", "Rain", "Weather Code", "Wind Speed"];
 const hoursOfDay = Array.from({ length: 24 }, (_, i) => i);
-
-
-
 
 const Scards = (props) => {
   return (
@@ -34,10 +34,25 @@ const Scards = (props) => {
 };
 
 const Service = () => {
-	
+  const [apiResponse, setApiResponse] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+		"https://api.open-meteo.com/v1/forecast?latitude=35.77&longitude=-78.69&hourly=temperature_2m,rain,weathercode,windspeed_10m&current_weather=true&forecast_days=1&start_date=2023-04-15&end_date=2023-04-15&timezone=America%2FNew_York"
+      );
+      const data = await response.json();
+      setApiResponse(data.hourly);
+    };
+
+    fetchData();
+  }, []);
+
+  
+
   return (
     <>
-      <Secheader
+     <Secheader
         sectitle="Weather Status"
         secdesc="Check if the weather is right to have fun today!"
       />
@@ -49,21 +64,33 @@ const Service = () => {
           </div>
           <div className="row d-flex items-align-center justify-content-evenly">
 		  <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>Time</TableCell>
-          {columns.map(column => <TableCell key={column}>{column}</TableCell>)}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {hoursOfDay.map(hour => (
-          <TableRow key={hour}>
-            <TableCell>{hour}:00</TableCell>
-            {columns.map(column => <TableCell key={`${column}-${hour}`}></TableCell>)}
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+  <TableHead>
+    <TableRow>
+      <TableCell>Time</TableCell>
+      {columns.map((column) => (
+        <TableCell key={column}>{column}</TableCell>
+      ))}
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    {hoursOfDay.map((hour) => (
+      <TableRow key={hour}>
+        <TableCell>{hour}:00</TableCell>
+        {columns.map((column) => {
+          if (column === "Temperature") {
+            return (
+              <TableCell key={`${column}-${hour}`}>
+			  {console.log("hey", apiResponse.temperature_2m[hour])}
+              </TableCell>
+            );
+          } else {
+            return <TableCell key={`${column}-${hour}`}></TableCell>;
+          }
+        })}
+      </TableRow>
+    ))}
+  </TableBody>
+</Table>
           </div>
         </div>
       </section>
