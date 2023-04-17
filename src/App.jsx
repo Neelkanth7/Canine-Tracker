@@ -6,6 +6,7 @@ import Service from "./pages/Service";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Navbar from "./pages/common/Navbar";
+import Graph from "./graph";
 import Footer from "./pages/common/Footer";
 import Career from "./pages/Career";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";

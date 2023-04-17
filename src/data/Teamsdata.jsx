@@ -1,55 +1,31 @@
 import React from "react";
-import one from "../images/teams/1.jpg";
-import two from "../images/teams/2.png";
-import three from "../images/teams/3.png";
-import four from "../images/teams/4.png";
-import five from "../images/teams/5.png";
-import six from "../images/teams/6.png";
-import seven from "../images/teams/7.png";
-import eight from "../images/teams/8.jpg";
+import one from "../images/teams/c.png";
+import two from "../images/teams/d.png";
+import three from "../images/teams/n.png";
+import four from "../images/teams/m.png";
 
 
 const Teams = [
 
 	{
 		timage: one,
-		ttitle : "Founder, Daisy Hooper",
+		ttitle : "Chirrag Nangia",
 	},
 
 	{
 		timage: two,
-		ttitle : "CEO, Zayden Gibson",
+		ttitle : "Divyank Gupta",
 	},
 
 	{
 		timage: three,
-		ttitle : "COO, Jim Payne",
+		ttitle : "Neelkanth Tripathi",
 	},
 
 	{
 		timage: four,
-		ttitle : "Designer, Rio Conway",
-	},
-
-	{
-		timage: seven,
-		ttitle : "Developer, Bert Jordan",
-	},
-
-	{
-		timage: five,
-		ttitle : "Accountant, Jarrod Hess",
-	},
-
-	{
-		timage: six,
-		ttitle : "Sales, Janelle Doherty",
-	},
-
-	{
-		timage: eight,
-		ttitle : "Purchasing, Janet Jones",
-	},
+		ttitle : "Meg Martin",
+	}
 
 ];
 
