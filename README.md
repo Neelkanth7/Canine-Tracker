@@ -1,21 +1,52 @@
-# ReactJs-Website
-A simple yet eye-catching service based website build with the help of ReactJs along with the use of Bootstrap 5 framework.
-This project was build from scratch, it's meant to provide you with an idea of how to get well-versed with reactjs for building speedy websites with less complications.
+# Canine-Tracker
 
-# Features
-- Fully responsive mobile first with Bootstrap frontend.
-- Contains multiple pages which seem to be mandatory for service based websites.
+SSH into the AWS Cloud EC2 instance using the command:
+    `ssh -i iot-canine.pem ec2-user@ec2-18-219-108-159.us-east-2.compute.amazonaws.com/`
+Note: .pem file not shared for security purposes
 
-# Dependencies Installed
-- Bootstrap 5 (alpha)
-	  1) npm install bootstrap@5.0.0-alpha1
-- SASS
-	  1) npm install node-sass
-- React Router
-	  1) $ npm install --save react-router-dom
-- Material-ui
-	  1) npm install @material-ui/icons
-	  2) npm install @material-ui/core
-	  
-# Licence
-MIT (https://github.com/AdarshJaso/ReactJs-Website/blob/master/LICENSE)
+Clone the repository on the ec2 machine using:
+    `git clone https://github.com/Neelkanth7/Canine-Tracker.git`
+
+Navigate to the project directory:
+    `cd Canine-Tracker`
+
+To run this project, you need to have the following dependencies:
+    - Install nvm
+        `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash`
+    - Set the Node.js version to 10 for your project 
+        `nvm use 10`
+    - Change the version of npm to 5 for your project
+        `npm install -g npm@5`
+    - Install Bootstrap 5 (alpha)
+        `npm install bootstrap@5.0.0-alpha1`
+    - Install SASS
+        `npm install node-sass@4.14.1`
+    - Install React Router
+        `npm install --save react-router-dom`
+    - Install Material-ui
+        `npm install @material-ui/icons`
+        `npm install @material-ui/core`
+    - Install the other required node packages for the project:
+        `npm install`
+
+To start the app, run:
+        `npm start`
+
+To start the app as a background process, you can use a process manager like PM2. Here are the steps to do that:
+    - Install PM2 globally by running the following command in your terminal:
+        `npm install pm2 -g`
+    - Navigate to the root directory of your React app.
+    - Start your React app as a background process by running the following command:
+        `pm2 start npm --name "Canine-Tracker" -- start`
+    This will start your app & can be accessed from your browser at http://ec2-18-219-108-159.us-east-2.compute.amazonaws.com:3000.
+
+    - You can check the status of your app by running:
+        `pm2 status`
+    - To stop your app, you can run:
+        `pm2 stop Canine-Tracker`
+
+
+
+
+
+
