@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import CanvasJSReact from './canvasjs.react';
+import csv from 'csv-parser';
+import data from './activity_tracker.json'
+
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 class Graph extends Component {
-	constructor() {
-		super();
+    csvData;
+	constructor(props) {
+		super(props);
 		this.toggleDataSeries = this.toggleDataSeries.bind(this);
+        this.state = {
+            data: []
+          };
 	}
+
 	toggleDataSeries(e){
 		if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
 			e.dataSeries.visible = false;
@@ -17,6 +26,8 @@ class Graph extends Component {
 		this.chart.render();
 	}
 	render() {
+        console.log(data);
+        console.log(data[data.length - 1]);
 		const options = {
 			animationEnabled: true,
 			exportEnabled: true,
@@ -47,11 +58,11 @@ class Graph extends Component {
 				showInLegend: true,
 				yValueFormatString: "#,###",
 				dataPoints: [
-					{ label: "16/04/2023 17:00:24 PM", y: 20 },
-					{ label: "17/04/2023 17:00:24 PM", y: 30 },
-					{ label: "18/04/2023 17:00:24 PM", y: 40 },
-					{ label: "19/04/2023 17:00:24 PM", y: 40 },
-					{ label: "20/04/2023 17:00:24 PM", y: 50 },
+					{ label: JSON.stringify(data[data.length - 1].StartTime), y: data[data.length - 1].Walking},
+					{ label: JSON.stringify(data[data.length - 2].StartTime), y: data[data.length - 2].Walking},
+					{ label: JSON.stringify(data[data.length - 3].StartTime), y: data[data.length - 3].Walking},
+					{ label: JSON.stringify(data[data.length - 4].StartTime), y: data[data.length - 4].Walking},
+					{ label: JSON.stringify(data[data.length - 5].StartTime), y: data[data.length - 5].Walking},
 				]
 			},
 			{
@@ -60,11 +71,11 @@ class Graph extends Component {
 				showInLegend: true,
 				yValueFormatString: "#,###",
 				dataPoints: [
-					{ label: "16/04/2023 17:00:24 PM", y: 50 },
-					{ label: "17/04/2023 17:00:24 PM", y: 40 },
-					{ label: "18/04/2023 17:00:24 PM", y: 40 },
-					{ label: "19/04/2023 17:00:24 PM", y: 30 },
-					{ label: "20/04/2023 17:00:24 PM", y: 20 },
+					{ label: JSON.stringify(data[data.length - 1].StartTime), y: data[data.length - 1].Resting },
+					{ label: JSON.stringify(data[data.length - 2].StartTime), y: data[data.length - 2].Resting },
+					{ label: JSON.stringify(data[data.length - 3].StartTime), y: data[data.length - 3].Resting },
+					{ label: JSON.stringify(data[data.length - 4].StartTime), y: data[data.length - 4].Resting },
+					{ label: JSON.stringify(data[data.length - 5].StartTime), y: data[data.length - 5].Resting },
 				]
 			},
 			{
@@ -73,11 +84,11 @@ class Graph extends Component {
 				showInLegend: true,
 				yValueFormatString: "#,###",
 				dataPoints: [
-					{ label: "16/04/2023 17:00:24 PM", y: 30 },
-					{ label: "17/04/2023 17:00:24 PM", y: 30 },
-					{ label: "18/04/2023 17:00:24 PM", y: 20 },
-					{ label: "19/04/2023 17:00:24 PM", y: 30 },
-					{ label: "20/04/2023 17:00:24 PM", y: 30 },
+					{ label: JSON.stringify(data[data.length - 1].StartTime), y: data[data.length - 1].Strenous },
+					{ label: JSON.stringify(data[data.length - 2].StartTime), y: data[data.length - 2].Strenous },
+					{ label: JSON.stringify(data[data.length - 3].StartTime), y: data[data.length - 3].Strenous },
+					{ label: JSON.stringify(data[data.length - 4].StartTime), y: data[data.length - 4].Strenous },
+					{ label: JSON.stringify(data[data.length - 5].StartTime), y: data[data.length - 5].Strenous },
 			]
 			}]
 		}
