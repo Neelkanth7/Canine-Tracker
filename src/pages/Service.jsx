@@ -48,7 +48,7 @@ const weatherCodes = {
 const corsProxy = "https://cors-anywhere.herokuapp.com/";
 
 
-function sendPostRequest() {
+function sendPostRequest(result) {
   fetch(
     "https://cors-anywhere.herokuapp.com/https://maker.ifttt.com/trigger/alert/with/key/jYQPvCu0FhLHWWubV9HtYXC26cpOPTzypnDvzurjZNl",
     {
@@ -61,7 +61,7 @@ function sendPostRequest() {
     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
  
       },
-      body: JSON.stringify({ value1: "testing a new stmt\nmilo" }),
+      body: JSON.stringify({ value1: result }),
     }
   )
 	.then(response => response.json())
@@ -74,24 +74,87 @@ function sendPostRequest() {
     });
 }
 
-const Scards = (props) => {
-  return (
-    <div className="col-md-4 col-lg-4 mb-3 text-center">
-      <div className="box_border col-lg-9 p-3 pt-4 m-auto rounded">
-        <img
-          src={props.scardimage}
-          className="img-fluid mb-2"
-          alt="cards"
-          width="20%"
-        />
-        <p className="my-2">{props.scardtitle}</p>
-        <p className="text-muted text-left text-xl-center text-lg-center">
-          {props.scarddesc}
-        </p>
-      </div>
-    </div>
-  );
-};
+function getWeatherConditions(data) {
+	const weatherCodes = {
+	  0: "Clear sky",
+	  1: "Mainly clear",
+	  2: "Partly cloudy",
+	  3: "Overcast"
+	};
+  
+	const weatherConditions = [];
+	let currentWeather = null;
+	let start = null;
+	
+	for (let i = 0; i < data.time.length; i++) {
+	  const weatherCode = data.weathercode[i];
+	  const time = new Date(data.time[i]).toLocaleTimeString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
+	  
+	  if (weatherCode !== currentWeather) {
+		if (currentWeather !== null) {
+		  const end = new Date(data.time[i-1]).toLocaleTimeString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
+		  weatherConditions.push({ start, end, condition: weatherCodes[currentWeather] });
+		}
+		currentWeather = weatherCode;
+		start = time;
+	  }
+	}
+	
+	if (currentWeather !== null) {
+	  const end = new Date(data.time[data.time.length-1]).toLocaleTimeString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
+	  weatherConditions.push({ start, end, condition: weatherCodes[currentWeather] });
+	}
+	
+	let result = '';
+  
+  for (const { start, end, condition } of weatherConditions) {
+    result += `${start} - ${end} -> ${condition}\n`;
+  }
+  
+  sendPostRequest(result)
+  }
+
+  function checkWeather(data) {
+   
+    const latestTemp = data.temperature_2m[data.temperature_2m.length - 1];
+    const latestWeatherCode = data.weathercode[data.weathercode.length - 1];
+
+    const weatherCodesToWatch = [51, 53, 55, 66, 67, 71, 73, 75, 77, 80, 81, 82, 85, 86, 95, 96, 99];
+    const isWeatherCodeToWatch = weatherCodesToWatch.includes(latestWeatherCode);
+
+    // if the temperature is below 10 degrees and the weather code is in the list of codes to watch, send an alert
+    if (latestTemp < 10 && isWeatherCodeToWatch) {
+        sendPostRequest("The temperature is below 10 degrees and there is a weather code to watch. Please be careful.")
+    }
+
+    // set the timeout to call the function again in 30 minutes
+    setTimeout(checkWeather, 30 * 60 * 1000);
+}
+
+// call the function to start checking the weather
+
+
+  
+  
+
+// const Scards = (props) => {
+//   return (
+//     <div className="col-md-4 col-lg-4 mb-3 text-center">
+//       <div className="box_border col-lg-9 p-3 pt-4 m-auto rounded">
+//         <img
+//           src={props.scardimage}
+//           className="img-fluid mb-2"
+//           alt="cards"
+//           width="20%"
+//         />
+//         <p className="my-2">{props.scardtitle}</p>
+//         <p className="text-muted text-left text-xl-center text-lg-center">
+//           {props.scarddesc}
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
 
 const Service = () => {
   const [apiResponse, setApiResponse] = useState("");
@@ -110,6 +173,8 @@ const Service = () => {
   }, []);
 
   console.log("hey", apiResponse);
+  apiResponse && getWeatherConditions(apiResponse)
+  apiResponse && checkWeather(apiResponse);
 
   return (
     <>
@@ -124,7 +189,7 @@ const Service = () => {
             <p className="display-6 mb-1">Weather Status for Today!</p>
           </div>
           <div className="row d-flex items-align-center justify-content-evenly">
-            <button onClick={sendPostRequest}>Send Request</button>
+            
 
             <Table>
               <TableHead>
