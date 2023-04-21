@@ -54,7 +54,7 @@ class Graph extends Component {
 			data: [
 			{
 				type: "stackedColumn",
-				name: "Strenous",
+				name: "Walking",
 				showInLegend: true,
 				yValueFormatString: "#,###",
 				dataPoints: [
@@ -67,7 +67,7 @@ class Graph extends Component {
 			},
 			{
 				type: "stackedColumn",
-				name: "Walking",
+				name: "Resting",
 				showInLegend: true,
 				yValueFormatString: "#,###",
 				dataPoints: [
@@ -80,7 +80,7 @@ class Graph extends Component {
 			},
 			{
 				type: "stackedColumn",
-				name: "Resting",
+				name: "Strenous",
 				showInLegend: true,
 				yValueFormatString: "#,###",
 				dataPoints: [
