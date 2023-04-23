@@ -1,44 +1,32 @@
 [
     {
-      "StartTime": "16/04/2023 17:00:24 PM",
-      "EndTime": "16/04/2023 17:00:55 PM",
-      "Active": 25,
-      "Resting": 75
+        "StartTime": "23/04/2023 01:38:29 AM",
+        "EndTime": "23/04/2023 01:39:31 AM",
+        "Active": 75.0,
+        "Resting": 25.0
     },
     {
-      "StartTime": "16/04/2023 17:01:22 PM",
-      "EndTime": "16/04/2023 17:01:38 PM",
-      "Active": 25,
-      "Resting": 75
+        "StartTime": "23/04/2023 01:40:47 AM",
+        "EndTime": "23/04/2023 01:41:26 AM",
+        "Active": 80.0,
+        "Resting": 20.0
     },
     {
-      "StartTime": "16/04/2023 17:04:35 PM",
-      "EndTime": "16/04/2023 17:04:45 PM",
-      "Active": 25,
-      "Resting": 75
+        "StartTime": "23/04/2023 01:43:51 AM",
+        "EndTime": "23/04/2023 01:44:55 AM",
+        "Active": 57.14,
+        "Resting": 42.86
     },
     {
-      "StartTime": "18/04/2023 00:25:46 AM",
-      "EndTime": "18/04/2023 00:26:30 AM",
-      "Active": 25,
-      "Resting": 75
+        "StartTime": "23/04/2023 01:45:18 AM",
+        "EndTime": "23/04/2023 01:45:26 AM",
+        "Active": 50.0,
+        "Resting": 50.0
     },
     {
-      "StartTime": "18/04/2023 00:30:42 AM",
-      "EndTime": "18/04/2023 00:31:16 AM",
-      "Active": 25,
-      "Resting": 75
-    },
-    {
-      "StartTime": "18/04/2023 00:31:43 AM",
-      "EndTime": "18/04/2023 00:32:10 AM",
-      "Active": 25,
-      "Resting": 75
-    },
-    {
-      "StartTime": "18/04/2023 00:32:16 AM",
-      "EndTime": "18/04/2023 00:38:21 AM",
-      "Active": 25,
-      "Resting": 75
+        "StartTime": "23/04/2023 01:45:34 AM",
+        "EndTime": "23/04/2023 01:45:50 AM",
+        "Active": 66.67,
+        "Resting": 33.33
     }
-   ]
+]
