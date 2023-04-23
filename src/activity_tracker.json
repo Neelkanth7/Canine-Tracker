@@ -2,50 +2,43 @@
     {
       "StartTime": "16/04/2023 17:00:24 PM",
       "EndTime": "16/04/2023 17:00:55 PM",
-      "Walking": 25,
-      "Resting": 25,
-      "Strenous": 50
+      "Active": 25,
+      "Resting": 75
     },
     {
       "StartTime": "16/04/2023 17:01:22 PM",
       "EndTime": "16/04/2023 17:01:38 PM",
-      "Walking": 33.33,
-      "Resting": 0,
-      "Strenous": 66.67
+      "Active": 25,
+      "Resting": 75
     },
     {
       "StartTime": "16/04/2023 17:04:35 PM",
       "EndTime": "16/04/2023 17:04:45 PM",
-      "Walking": 50,
-      "Resting": 0,
-      "Strenous": 50
+      "Active": 25,
+      "Resting": 75
     },
     {
       "StartTime": "18/04/2023 00:25:46 AM",
       "EndTime": "18/04/2023 00:26:30 AM",
-      "Walking": 25,
-      "Resting": 25,
-      "Strenous": 50
+      "Active": 25,
+      "Resting": 75
     },
     {
       "StartTime": "18/04/2023 00:30:42 AM",
       "EndTime": "18/04/2023 00:31:16 AM",
-      "Walking": 25,
-      "Resting": 25,
-      "Strenous": 50
+      "Active": 25,
+      "Resting": 75
     },
     {
       "StartTime": "18/04/2023 00:31:43 AM",
       "EndTime": "18/04/2023 00:32:10 AM",
-      "Walking": 25,
-      "Resting": 25,
-      "Strenous": 50
+      "Active": 25,
+      "Resting": 75
     },
     {
       "StartTime": "18/04/2023 00:32:16 AM",
       "EndTime": "18/04/2023 00:38:21 AM",
-      "Walking": 100,
-      "Resting": 0,
-      "Strenous": 0
+      "Active": 25,
+      "Resting": 75
     }
    ]

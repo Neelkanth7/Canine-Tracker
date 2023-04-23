@@ -209,7 +209,7 @@ const Service = () => {
                         return (
                           <TableCell key={`${column}-${hour}`}>
                             {apiResponse.temperature_2m &&
-                              apiResponse.temperature_2m[hour]}
+								`${apiResponse.temperature_2m[hour]} °C`}
                           </TableCell>
                         );
                       } else if (column === "Rain") {
@@ -229,7 +229,7 @@ const Service = () => {
                         return (
                           <TableCell key={`${column}-${hour}`}>
                             {apiResponse.windspeed_10m &&
-                              apiResponse.windspeed_10m[hour]}
+                              `${apiResponse.windspeed_10m[hour]} km/hr`}
                           </TableCell>
                         );
                       } else {

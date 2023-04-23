@@ -54,19 +54,6 @@ class Graph extends Component {
 			data: [
 			{
 				type: "stackedColumn",
-				name: "Walking",
-				showInLegend: true,
-				yValueFormatString: "#,###",
-				dataPoints: [
-					{ label: JSON.stringify(data[data.length - 1].StartTime), y: data[data.length - 1].Walking},
-					{ label: JSON.stringify(data[data.length - 2].StartTime), y: data[data.length - 2].Walking},
-					{ label: JSON.stringify(data[data.length - 3].StartTime), y: data[data.length - 3].Walking},
-					{ label: JSON.stringify(data[data.length - 4].StartTime), y: data[data.length - 4].Walking},
-					{ label: JSON.stringify(data[data.length - 5].StartTime), y: data[data.length - 5].Walking},
-				]
-			},
-			{
-				type: "stackedColumn",
 				name: "Resting",
 				showInLegend: true,
 				yValueFormatString: "#,###",
@@ -80,16 +67,16 @@ class Graph extends Component {
 			},
 			{
 				type: "stackedColumn",
-				name: "Strenous",
+				name: "Active",
 				showInLegend: true,
 				yValueFormatString: "#,###",
 				dataPoints: [
-					{ label: JSON.stringify(data[data.length - 1].StartTime), y: data[data.length - 1].Strenous },
-					{ label: JSON.stringify(data[data.length - 2].StartTime), y: data[data.length - 2].Strenous },
-					{ label: JSON.stringify(data[data.length - 3].StartTime), y: data[data.length - 3].Strenous },
-					{ label: JSON.stringify(data[data.length - 4].StartTime), y: data[data.length - 4].Strenous },
-					{ label: JSON.stringify(data[data.length - 5].StartTime), y: data[data.length - 5].Strenous },
-			]
+					{ label: JSON.stringify(data[data.length - 1].StartTime), y: data[data.length - 1].Active},
+					{ label: JSON.stringify(data[data.length - 2].StartTime), y: data[data.length - 2].Active},
+					{ label: JSON.stringify(data[data.length - 3].StartTime), y: data[data.length - 3].Active},
+					{ label: JSON.stringify(data[data.length - 4].StartTime), y: data[data.length - 4].Active},
+					{ label: JSON.stringify(data[data.length - 5].StartTime), y: data[data.length - 5].Active},
+				]
 			}]
 		}
 		return (
