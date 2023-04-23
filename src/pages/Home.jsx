@@ -6,6 +6,8 @@ import work3 from "../images/brands/amazon_aws.svg"
 import work4 from "../images/brands/reactjs.svg"
 import work5 from "../images/brands/jupyter.svg"
 import work6 from "../images/brands/mqtt.svg"
+import work7 from "../images/brands/esp32.png"
+import work8 from "../images/brands/TDK.png"
 import product1 from "../images/products/99.png"
 import BusinessIcon from '@material-ui/icons/Business';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -113,6 +115,12 @@ const Home = () => {
 					</div>
 					<div className="col-md-3 col-4 col-lg-4 text-center">
 						<img className="img-fluid" alt="company6" src={work6} />
+					</div>
+					<div className="col-md-3 col-4 col-lg-4 text-center">
+						<img className="img-fluid" alt="company6" width="60px" height="60px" src={work7} />
+					</div>
+					<div className="col-md-3 col-4 col-lg-4 text-center">
+						<img className="img-fluid" alt="company6" src={work8} />
 					</div>
 				</div>
 			</div>

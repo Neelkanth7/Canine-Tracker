@@ -108,7 +108,7 @@ function getWeatherConditions(data) {
 	let result = '';
   
   for (const { start, end, condition } of weatherConditions) {
-    result += `${start} - ${end} -> ${condition}\n`;
+    result += `${formatAMPMTime(start).padEnd(5)} - ${formatAMPMTime(end).padEnd(5)} -> ${condition}\n`;
   }
   
   sendPostRequest(result)
@@ -203,7 +203,7 @@ const Service = () => {
               <TableBody>
                 {hoursOfDay.map((hour) => (
                   <TableRow key={hour}>
-                    <TableCell>{hour}:00</TableCell>
+                    <TableCell>{convertToAMPM(hour)} EST</TableCell>
                     {columns.map((column) => {
                       if (column === "Temperature") {
                         return (
@@ -263,3 +263,28 @@ const Service = () => {
 };
 
 export default Service;
+export function convertToAMPM(hour) {
+  if (hour === 0) {
+    return "12 AM";
+  } else if (hour < 10) {
+    return "0" + hour + " AM";
+  } else if (hour < 12) {
+    return hour + " AM";
+  } else if (hour === 12) {
+    return "12 PM";
+  } else if (hour < 22) {
+    return "0" + (hour - 12) + " PM";
+  } else {
+    return (hour - 12) + " PM";
+  }
+}
+export function formatAMPMTime(time) {
+  let [timeStr, ampm] = time.split(' ');
+  let [hour, minute] = timeStr.split(':');
+
+  if (hour.length === 1) {
+    hour = '0' + hour;
+  }
+
+  return `${hour}:${minute} ${ampm}`;
+}
