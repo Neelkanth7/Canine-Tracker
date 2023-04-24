@@ -32,7 +32,7 @@ To run this project, you need to have the following dependencies:
 To start the app, run:  
         `npm start`  
 
-To start the app as a background process, you can use a process manager like PM2. Here are the steps to do that:  
+Alternatively, to start the app as a background process, you can use a process manager like PM2. Here are the steps to do that:  
     - Install PM2 globally by running the following command in your terminal:  
         `npm install pm2 -g`  
     - Navigate to the root directory of your React app.  
@@ -43,6 +43,11 @@ To start the app as a background process, you can use a process manager like PM2
         `pm2 status`  
     - To stop your app, you can run:  
         `pm2 stop Canine-Tracker`  
+
+Heroku demo server needs to be up for sending web requests to IFTTT. To access heroku temp server visit the link below and click request server if its not running.
+    `https://cors-anywhere.herokuapp.com/`
+
+
 
 
 
