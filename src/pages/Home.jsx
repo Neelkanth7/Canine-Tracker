@@ -1,5 +1,4 @@
 import React from "react";
-import web from "../images/logo.png"
 import work1 from "../images/brands/raspberrypi.svg"
 import work2 from "../images/brands/ifttt.svg"
 import work3 from "../images/brands/amazon_aws.svg"
@@ -8,7 +7,6 @@ import work5 from "../images/brands/jupyter.svg"
 import work6 from "../images/brands/mqtt.svg"
 import work7 from "../images/brands/esp32.png"
 import work8 from "../images/brands/TDK.png"
-import product1 from "../images/products/99.png"
 import BusinessIcon from '@material-ui/icons/Business';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import PhotoSizeSelectSmallIcon from '@material-ui/icons/PhotoSizeSelectSmall';

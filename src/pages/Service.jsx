@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Secheader from "./common/Secondaryheader";
-import Data from "../data/Servicesdata";
 
 import {
   Table,
