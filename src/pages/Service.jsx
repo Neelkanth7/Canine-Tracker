@@ -72,6 +72,7 @@ function sendPostRequest(result) {
     .catch((error) => {
       // handle error
     });
+	console.log("hiiii")
 }
 
 function getWeatherConditions(data) {

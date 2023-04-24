@@ -58,39 +58,7 @@ const Home = () => {
 			</div>
 		</section>
 
-		<section> 
-			<div className="container mx-auto py-5">
-				<div className="mb-5 text-center">
-					<p className="display-6 mb-1">Our Products</p>
-				</div>
-				<div className="row gy-3 d-flex align-items-center justify-content-evenly">
-					<div className="col-md-3 text-center">
-						<div className="snip1534">
-							<img className="img-fluid" alt="product1"  src={product1} />
-							<div className="img_caption">
-								<h6>Demo Product</h6>
-							</div>
-						</div>
-					</div>
-					<div className="col-md-3 text-center">
-						<div className="snip1534">
-							<img className="img-fluid" alt="product2" src={product1} />
-							<div className="img_caption">
-								<h6>Demo Product</h6>
-							</div>
-						</div>
-					</div>
-					<div className="col-md-3 text-center">
-						<div className="snip1534">
-							<img className="img-fluid" alt="product3" src={product1} />
-							<div className="img_caption">
-								<h6>Demo Product</h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		
 
 		<section className="bg-light"> 
 			<div className="container mx-auto py-5">
